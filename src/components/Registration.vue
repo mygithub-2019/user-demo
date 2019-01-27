@@ -36,10 +36,11 @@
                 v-model="email"
                 @blur="$v.email.$touch()">
             <div v-if="!$v.email.email">Please enter a valid email</div>
-            <div v-if="!$v.email.required">Email can't be empty</div>
+            <!-- <div v-if="$v.email.$error">Email can't be empty</div> -->
+            {{$v}}
          </div>
          <button @click.prevent="register"  
-            :disabled='!$v.invalid'
+            :disabled="$v.$invalid"
             class="btn btn-primary">Register</button>
          <button @click.prevent="gotToLogin" class="btn btn-primary">Go To Login</button>
       </form>
@@ -60,13 +61,7 @@ export default {
             pwd: "",
             cnfpwd: "",
             name: "",
-            email: "",
-            userData:{
-                name: "",
-                pwd: btoa(this.pwd),
-                cnfpwd: btoa(this.cnfpwd),
-                email: ""
-            }
+            email: ""
         }
     },
     validations:{
@@ -90,11 +85,20 @@ export default {
         gotToLogin(){
             this.$emit('goToLogin', true);
         },
+        getUserFormData(){
+            return{
+                name: this.name,
+                pwd: btoa(this.pwd),
+                cnfpwd: btoa(this.cnfpwd),
+                email: this.email
+            }
+        },
         register(){
             debugger;
-            axios.post('https://users-825fd.firebaseio.com/users.json', this.userData)
+            axios.post('https://users-825fd.firebaseio.com/users.json', this.getUserFormData())
                 .then(res => {
                     this.resetFormData();
+                    this.gotToLogin();
                 })
                 .catch(e => {
                     consol.log(e);

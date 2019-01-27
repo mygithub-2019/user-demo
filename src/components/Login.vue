@@ -33,7 +33,10 @@
             class="btn btn-primary">Login</button>
         </div>
          <div v-if='isUserValid' class="alert alert-success">
-            <strong>Success!</strong>
+            <strong>Login Success!</strong>
+        </div><br>
+        <div v-if='isUserRegistered' class="alert alert-danger">
+            <strong>User not found. Please register to login.</strong>
         </div>
       </form>
    </div>
@@ -56,7 +59,8 @@ export default {
             users: [],
             userName: '',
             pwd: '',
-            isUserValid: false
+            isUserValid: false,
+            isUserRegistered: false
         }
     },
     methods:{
@@ -64,19 +68,27 @@ export default {
             this.$emit('emitNewUser', true);
         },
         login(){
-            this.checkUser()
+            debugger
+            var _userStatus = this.checkUser();
+            if(_userStatus){
+                this.isUserValid = true;
+            }else{
+                this.isUserRegistered = true;
+            }
         },
         checkUser(){
             var _users = this.users;
+            var _userFound = false;
             for(var _user in _users){
-                if(_users[_user].name === this.userName && _users[_user].pwd === this.pwd){
-                    this.isUserValid = true;
+                if(_users[_user].name === this.userName && atob(_users[_user].pwd) === this.pwd){
+                    //this.isUserValid = true;
+                    _userFound = true;
                     break;
                 }else{
                     continue;
                 }
             }
-            
+            return _userFound;
         }
     },
     validations:{
