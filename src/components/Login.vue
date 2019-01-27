@@ -6,6 +6,7 @@
             <label for="userName">User Name</label>
             <input type="text" class="form-control" id="userName"
                 v-model="userName"
+                placeholder="Please enter user name"
                 @blur="$v.userName.$touch()">
                 <div  :class="{invalid: $v.userName.$error}" 
                     v-if="$v.userName.$error">User name can't be lessthan 6 letters.</div>
@@ -15,6 +16,7 @@
             <label for="pwd">Password</label>
             <input type="password" class="form-control input" id="pwd"
                 v-model="pwd"
+                placeholder="Please enter password"
                 @blur="$v.pwd.$touch()">
                 <div  :class="{invalid: $v.pwd.$error}" 
                     v-if="$v.pwd.$error">Password can't be lessthan 6 letters.</div>
