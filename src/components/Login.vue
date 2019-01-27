@@ -68,7 +68,6 @@ export default {
             this.$emit('emitNewUser', true);
         },
         login(){
-            debugger
             var _userStatus = this.checkUser();
             if(_userStatus){
                 this.isUserValid = true;
