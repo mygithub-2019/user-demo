@@ -37,7 +37,7 @@
                 @blur="$v.email.$touch()">
             <div v-if="!$v.email.email">Please enter a valid email</div>
             <!-- <div v-if="$v.email.$error">Email can't be empty</div> -->
-            {{$v}}
+            <!-- {{$v}} -->
          </div>
          <button @click.prevent="register"  
             :disabled="$v.$invalid"
@@ -83,7 +83,8 @@ export default {
     },
     methods:{
         gotToLogin(){
-            this.$emit('goToLogin', true);
+            //this.$emit('goToLogin', true);
+            this.$router.push('/');
         },
         getUserFormData(){
             return{

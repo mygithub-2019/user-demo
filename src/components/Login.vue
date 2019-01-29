@@ -50,6 +50,7 @@ import {
     minValue, minLength, sameAs,
     requiredUnless} from 
   'vuelidate/lib/validators';
+import { debug } from 'util';
 
 export default {
     data(){
@@ -65,12 +66,14 @@ export default {
     },
     methods:{
         newUser(){
-            this.$emit('emitNewUser', true);
+            //this.$emit('emitNewUser', true);
+            this.$router.push('/registration');
         },
         login(){
             var _userStatus = this.checkUser();
             if(_userStatus){
                 this.isUserValid = true;
+                this.$router.push('/dashboard');
             }else{
                 this.isUserRegistered = true;
             }
@@ -109,6 +112,10 @@ export default {
                 console.log(error);
             });
     }
+    // ,
+    // beforeRouteLeave(to, from, next){
+    //     next(this.isUserValid);
+    // }
 }
 </script>
 

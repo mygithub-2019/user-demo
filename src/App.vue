@@ -1,12 +1,14 @@
 <template>
   <div id="app">
     <div class="col-lg-4 container-fluid">
-      <app-login 
+      <!-- <app-login 
         v-if='!isNewUserRegistration' 
         @emitNewUser='newUserRegistration'></app-login>
       <app-register 
         v-if='isNewUserRegistration'
-        @goToLogin='showLogin'></app-register>
+        @goToLogin='showLogin'></app-register> -->
+        
+        <router-view></router-view>
     </div>
   </div>
 </template>
