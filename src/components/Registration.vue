@@ -1,5 +1,5 @@
 <template>
-   <div>
+   <div class="col-lg-4 container-fluid">
       <form>
         <h3>{{ newUserRegistration }}</h3>
          <div class="form-group cls-validation" :class="{invalid: $v.name.$error}">

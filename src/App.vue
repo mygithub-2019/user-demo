@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div class="col-lg-4 container-fluid">
+    <div>
       <!-- <app-login 
         v-if='!isNewUserRegistration' 
         @emitNewUser='newUserRegistration'></app-login>
@@ -46,7 +46,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #7c7f80;
-  margin-top: 15%;
+  //margin-top: 15%;
 }
 
 h1, h2 {

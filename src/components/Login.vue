@@ -1,5 +1,5 @@
 <template>
-   <div>
+   <div class="col-lg-4 container-fluid">
       <form action="/action_page.php">
         <div v-if='!isUserValid'>
          <div class="form-group input" :class="{invalid: $v.userName.$error}">
