@@ -77,6 +77,7 @@ export default {
             }else{
                 this.isUserRegistered = true;
             }
+            //this.$store.dispatch('signUp', {email: userEmail, pwd: userPwd})
         },
         checkUser(){
             var _users = this.users;
